@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Omkar Sanjeev — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --off-black: #111111;
+    --card: #161616;
+    --border: #222222;
+    --text: #e8e2d9;
+    --muted: #7a7570;
+    --accent: #c8a96e;
+    --accent2: #e8c98e;
+    --white: #f5f0eb;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: .08em;
+    color: var(--accent);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s;
+    cursor: pointer;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── SECTIONS ── */
+  section { padding: 7rem 4rem; }
+
+  /* ── COVER ── */
+  #cover {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-left {
+    padding: 8rem 4rem 8rem 6rem;
+    z-index: 2;
+    position: relative;
+  }
+  .cover-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .cover-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .cover-name span { color: var(--accent); font-style: italic; }
+  .cover-tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    border-left: 2px solid var(--accent);
+    padding-left: 1rem;
+  }
+  .cover-roles { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .role-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .4rem 1rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 2px;
+  }
+  .cover-cta {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--accent);
+    padding: .85rem 2rem;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .cover-cta:hover { background: var(--accent2); }
+  .cover-right {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 100%;
+    gap: 3px;
+  }
+  .cover-img {
+    background: var(--card);
+    overflow: hidden;
+    position: relative;
+  }
+  .cover-img:nth-child(1) { grid-column: 1/3; grid-row: 1/2; }
+  .cover-img:nth-child(2) { grid-row: 2/4; }
+  .cover-img:nth-child(3) { grid-row: 2/3; }
+  .cover-img:nth-child(4) { grid-row: 3/4; }
+  .img-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--card);
+    border: 1px solid var(--border);
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .img-placeholder svg { opacity: .25; }
+
+  .cover-noise {
+    position: absolute; inset: 0; z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .cover-line {
+    position: absolute; bottom: 2rem; left: 6rem;
+    font-family: 'DM Mono', monospace; font-size: 0.6rem;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--border);
+    z-index: 2;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header { margin-bottom: 4rem; }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--white);
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+  .section-divider {
+    width: 60px; height: 2px;
+    background: var(--accent);
+    margin-top: 1.2rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--off-black); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-stat {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: .3rem;
+  }
+  .about-text p {
+    font-size: 1.05rem;
+    color: #b0a898;
+    margin-bottom: 1.5rem;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .about-gear {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+  }
+  .gear-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .8rem;
+  }
+  .gear-item { color: var(--text); font-size: .95rem; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--black); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .skill-col {
+    background: var(--card);
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+  }
+  .skill-col-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding: .6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    font-size: .9rem;
+    color: #b0a898;
+  }
+  .skill-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .skill-bar {
+    margin-top: 2rem;
+  }
+  .bar-row { margin-bottom: 1rem; }
+  .bar-label {
+    display: flex; justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .4rem;
+  }
+  .bar-track {
+    height: 2px;
+    background: var(--border);
+    position: relative;
+  }
+  .bar-fill {
+    position: absolute; top: 0; left: 0; height: 100%;
+    background: var(--accent);
+  }
+
+  /* ── DESIGN PROJECTS ── */
+  #design { background: var(--off-black); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+  }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+    transition: border-color .3s;
+  }
+  .project-card:hover { border-color: var(--accent); }
+  .project-card.large { grid-column: span 2; }
+  .project-img {
+    height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .project-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(10,10,10,.9) 100%);
+  }
+  .project-icon {
+    font-size: 3rem;
+    opacity: .15;
+    font-family: 'Playfair Display', serif;
+    color: var(--accent);
+    font-weight: 900;
+    letter-spacing: -.05em;
+  }
+  .project-content { padding: 1.5rem; }
+  .project-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .5rem;
+  }
+  .project-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: .5rem;
+  }
+  .project-desc {
+    font-size: .85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── PHOTOGRAPHY ── */
+  #photography { background: var(--black); }
+  .photo-masonry {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 160px);
+    gap: 3px;
+  }
+  .photo-tile {
+    background: var(--card);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: flex-end;
+    transition: transform .3s;
+    cursor: pointer;
+  }
+  .photo-tile:hover { transform: scale(1.01); z-index: 2; }
+  .photo-tile.tall { grid-row: span 2; }
+  .photo-tile.wide { grid-column: span 2; }
+  .photo-tile-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    gap: .4rem;
+  }
+  .photo-category {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: .8rem 1rem;
+    background: linear-gradient(to top, rgba(10,10,10,.9) 0%, transparent 100%);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ── FEATURED PROJECTS ── */
+  #featured { background: var(--off-black); }
+  .featured-list { display: flex; flex-direction: column; gap: 2px; }
+  .featured-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem 2.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: border-color .3s, background .3s;
+  }
+  .featured-item:hover { border-color: var(--accent); background: #1a1a1a; }
+  .featured-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    transition: color .3s;
+  }
+  .featured-item:hover .featured-num { color: var(--accent); }
+  .featured-info { }
+  .featured-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .3rem;
+  }
+  .featured-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: .4rem;
+  }
+  .featured-desc { font-size: .9rem; color: var(--muted); max-width: 550px; }
+  .featured-arrow {
+    font-size: 1.5rem;
+    color: var(--border);
+    transition: color .3s, transform .3s;
+  }
+  .featured-item:hover .featured-arrow { color: var(--accent); transform: translateX(4px); }
+
+  /* ── LEADERSHIP ── */
+  #leadership { background: var(--black); }
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .leadership-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s;
+  }
+  .leadership-card:hover { border-color: var(--accent); }
+  .leadership-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+  }
+  .l-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .l-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: .5rem;
+    line-height: 1.2;
+  }
+  .l-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: .1em;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .l-points { list-style: none; }
+  .l-points li {
+    padding: .4rem 0;
+    font-size: .9rem;
+    color: #9a9088;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .l-points li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: .7rem;
+  }
+  .l-bg-text {
+    position: absolute;
+    bottom: -1rem; right: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    font-weight: 900;
+    color: rgba(200,169,110,.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--off-black);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+  .contact-inner {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .contact-big {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .contact-big em { font-style: italic; color: var(--accent); }
+  .contact-sub { color: var(--muted); font-size: .95rem; max-width: 340px; }
+  .contact-links { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.3rem 1.8rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color .3s, background .3s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: #1a1a1a; }
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-link-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .2rem;
+  }
+  .contact-link-value { font-size: .9rem; color: var(--text); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 5rem 1.5rem; }
+    #cover { grid-template-columns: 1fr; }
+    .cover-left { padding: 7rem 1.5rem 3rem; }
+    .cover-right { display: none; }
+    .about-grid, .skills-grid, .projects-grid, .leadership-grid, .contact-grid { grid-template-columns: 1fr; }
+    .photo-masonry { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .photo-tile.tall, .photo-tile.wide { grid-column: span 1; grid-row: span 1; }
+    .featured-item { grid-template-columns: 50px 1fr; }
+    .featured-arrow { display: none; }
+    footer { flex-direction: column; gap: .5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">OS.</div>
+  <ul class="nav-links">
+    <li><a onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a></li>
+    <li><a onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})">Skills</a></li>
+    <li><a onclick="document.getElementById('design').scrollIntoView({behavior:'smooth'})">Design</a></li>
+    <li><a onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">Projects</a></li>
+    <li><a onclick="document.getElementById('leadership').scrollIntoView({behavior:'smooth'})">Leadership</a></li>
+    <li><a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── 1. COVER ── -->
+<section id="cover">
+  <div class="cover-noise"></div>
+  <div class="cover-left fade-in">
+    <p class="cover-eyebrow">Portfolio 2024–25</p>
+    <h1 class="cover-name">Omkar<br/><span>Sanjeev</span></h1>
+    <p class="cover-tagline">Electronics Engineer &amp; Visual Storyteller</p>
+    <div class="cover-roles">
+      <span class="role-pill">Photography Club Lead</span>
+      <span class="role-pill">Design Head</span>
+      <span class="role-pill">ECE Student</span>
+    </div>
+
+  </div>
+  <div class="cover-right">
+    <div class="cover-grid">
+      <div class="cover-img">
+        <div class="img-placeholder">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          Event Photography
+        </div>
+      </div>
+      <div class="cover-img">
+        <div class="img-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Design Work
+        </div>
+      </div>
+      <div class="cover-img">
+        <div class="img-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Portrait
+        </div>
+      </div>
+      <div class="cover-img">
+        <div class="img-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Street
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-line">Sony DSC-H10 &nbsp;·&nbsp; CineLab &nbsp;·&nbsp; Spectrum</div>
+</section>
+
+<!-- ── 2. ABOUT ── -->
+<section id="about">
+  <div class="about-grid">
+    <div class="fade-in">
+      <div class="section-header">
+        <p class="section-num">01 / About</p>
+        <h2 class="section-title">The Person<br/>Behind the <em>Lens</em></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="about-stat">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Years Shooting</div>
+      </div>
+      <div class="about-stat">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Events Covered</div>
+      </div>
+      <div class="about-gear" style="margin-top:2rem;">
+        <div class="gear-label">Camera Experience</div>
+        <div class="gear-item" style="margin-bottom:.4rem;">📷 Nikon D3500</div>
+        <div class="gear-item" style="margin-bottom:.4rem;">📷 Nikon D6500</div>
+        <div class="gear-item" style="margin-bottom:.4rem;">📷 Nikon D7500</div>
+        <div class="gear-item">📷 Sony DSC-H10</div>
+      </div>
+    </div>
+    <div class="about-text fade-in">
+      <p>I'm <strong>Omkar Sanjeev</strong>, an Electronics and Communication Engineering student with a parallel life in visual media. I lead <strong>CineLab</strong>, the photography and videography wing under Spectrum, where I design curriculum, mentor members, and build a culture around seeing the world thoughtfully.</p>
+      <p>As <strong>Design Head</strong>, I translate ideas into visuals — event posters, social media creatives, and brand communications that speak before anyone reads a word.</p>
+      <p>Every frame I shoot and every canvas I design starts with one question: <strong>what should someone feel when they look at this?</strong> The answer drives everything else.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 3. SKILLS ── -->
+<section id="skills">
+  <div class="section-header fade-in">
+    <p class="section-num">02 / Skills</p>
+    <h2 class="section-title">Craft &amp; <em>Toolkit</em></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="skills-grid fade-in">
+    <div class="skill-col">
+      <div class="skill-col-title">Photography</div>
+      <div class="skill-item"><div class="skill-dot"></div>Event & Occasion Photography</div>
+      <div class="skill-item"><div class="skill-dot"></div>Portrait & Candid</div>
+      <div class="skill-item"><div class="skill-dot"></div>Street Photography</div>
+      <div class="skill-item"><div class="skill-dot"></div>Composition & Framing</div>
+      <div class="skill-item"><div class="skill-dot"></div>Photo Editing & Retouching</div>
+    </div>
+    <div class="skill-col">
+      <div class="skill-col-title">Graphic Design</div>
+      <div class="skill-item"><div class="skill-dot"></div>Event Poster Design</div>
+      <div class="skill-item"><div class="skill-dot"></div>Social Media Creatives</div>
+      <div class="skill-item"><div class="skill-dot"></div>Brand Identity & Visual Language</div>
+      <div class="skill-item"><div class="skill-dot"></div>Typography & Layout</div>
+    </div>
+    <div class="skill-col">
+      <div class="skill-col-title">Tools & Tech</div>
+      <div class="skill-item"><div class="skill-dot"></div>Adobe Lightroom</div>
+      <div class="skill-item"><div class="skill-dot"></div>Canva Pro</div>
+      <div class="skill-item"><div class="skill-dot"></div>Figma</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. DESIGN PROJECTS ── -->
+<section id="design">
+  <div class="section-header fade-in">
+    <p class="section-num">03 / Design Work</p>
+    <h2 class="section-title">IEEE <em>Design</em> Projects</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="projects-grid fade-in">
+    <div class="project-card large">
+      <div class="project-img" style="background: linear-gradient(135deg, #1a1208 0%, #0d0a0a 100%); height:280px;">
+        <div class="project-icon">IEEE</div>
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-content">
+        <div class="project-tag">Event Poster Series</div>
+        <div class="project-name">IEEE SB Annual Event Visuals</div>
+        <div class="project-desc">Complete visual identity for flagship IEEE Student Branch events — from workshop announcements to competition banners. Designed for digital distribution and print across campus notice boards.</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="height:200px; background: linear-gradient(135deg, #0d0f1a 0%, #0a0a0a 100%);">
+        <div class="project-icon">SM</div>
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-content">
+        <div class="project-tag">Social Media</div>
+        <div class="project-name">IEEE Instagram Creatives</div>
+        <div class="project-desc">Consistent branded social creatives for IEEE SB pages covering event highlights, member spotlights, and announcements.</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="height:200px; background: linear-gradient(135deg, #0f1a0d 0%, #0a0a0a 100%);">
+        <div class="project-icon">WS</div>
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-content">
+        <div class="project-tag">Workshop Materials</div>
+        <div class="project-name">Technical Workshop Collateral</div>
+        <div class="project-desc">Handouts, schedule cards, and digital screens for IEEE technical workshops and guest lectures. Clean, information-forward design.</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="height:200px; background: linear-gradient(135deg, #1a0d0d 0%, #0a0a0a 100%);">
+        <div class="project-icon">PR</div>
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-content">
+        <div class="project-tag">Promotional Design</div>
+        <div class="project-name">Recruitment & Outreach Creatives</div>
+        <div class="project-desc">Membership drive posters and awareness creatives targeting first and second year students across departments.</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="height:200px; background: linear-gradient(135deg, #0d1a18 0%, #0a0a0a 100%);">
+        <div class="project-icon">CB</div>
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-content">
+        <div class="project-tag">Branding</div>
+        <div class="project-name">CineLab Visual Identity</div>
+        <div class="project-desc">Brand elements, templates, and visual guidelines for the CineLab photography club under Spectrum — logo treatments, color palette, and member assets.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. FEATURED PROJECTS ── -->
+<section id="featured">
+  <div class="section-header fade-in">
+    <p class="section-num">05 / Projects</p>
+    <h2 class="section-title">What I've <em>Built</em></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="featured-list fade-in">
+    <div class="featured-item">
+      <div class="featured-num">01</div>
+      <div class="featured-info">
+        <div class="featured-tag">Platform Design · Tech</div>
+        <div class="featured-title">Uniconnect</div>
+        <div class="featured-desc">A unified connectivity platform designed to bridge students, clubs, and opportunities in a single interface. Contributed to UX design, visual language, and promotional collateral that drove adoption across campus communities.</div>
+      </div>
+      <div class="featured-arrow">→</div>
+    </div>
+    <div class="featured-item">
+      <div class="featured-num">02</div>
+      <div class="featured-info">
+        <div class="featured-tag">Product Design · Biotech</div>
+        <div class="featured-title">LactoSense</div>
+        <div class="featured-desc">A smart lactose intolerance detection system. Handled the product branding, pitch deck visuals, and device design documentation to communicate a technical innovation accessibly to a general audience.</div>
+      </div>
+      <div class="featured-arrow">→</div>
+    </div>
+    <div class="featured-item">
+      <div class="featured-num">03</div>
+      <div class="featured-info">
+        <div class="featured-tag">Product Design · Hardware</div>
+        <div class="featured-title">Drink Cooler</div>
+        <div class="featured-desc">An automated smart drink cooling device. Designed the prototype presentation visuals, instructional graphics, and product photography to communicate functionality and aesthetic appeal for showcases.</div>
+      </div>
+      <div class="featured-arrow">→</div>
+    </div>
+    <div class="featured-item">
+      <div class="featured-num">04</div>
+      <div class="featured-info">
+        <div class="featured-tag">Brand & Visual Design · AI/Tech</div>
+        <div class="featured-title">Percepta</div>
+        <div class="featured-desc">A perception-intelligence tech project requiring a distinctive visual identity. Developed logo, design system, and presentation assets that positioned Percepta as a credible, forward-looking technology concept.</div>
+      </div>
+      <div class="featured-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. LEADERSHIP ── -->
+<section id="leadership">
+  <div class="section-header fade-in">
+    <p class="section-num">06 / Leadership</p>
+    <h2 class="section-title">Roles &amp; <em>Responsibilities</em></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="leadership-grid fade-in">
+    <div class="leadership-card">
+      <div class="l-year">IEEE · 2024</div>
+      <div class="l-title">IEEE Day Ambassador</div>
+      <div class="l-org">IEEE Student Branch</div>
+      <ul class="l-points">
+        <li>Represented the IEEE Student Branch as an official IEEE Day 2024 Ambassador, a globally recognised role.</li>
+        <li>Organised and led campus-wide celebrations and awareness initiatives aligned with IEEE Day objectives.</li>
+        <li>Created promotional design assets and managed photography coverage for all related events.</li>
+        <li>Coordinated with chapter leadership to drive student engagement and participation in IEEE programs.</li>
+        <li>Documented the event visually for official IEEE SB archives and social media outreach.</li>
+      </ul>
+      <div class="l-bg-text">24</div>
+    </div>
+    <div class="leadership-card">
+      <div class="l-year">IEEE · 2026</div>
+      <div class="l-title">IEEE Space Ambassador</div>
+      <div class="l-org">IEEE Student Branch</div>
+      <ul class="l-points">
+        <li>Selected as an IEEE Space Ambassador 2026, contributing to the global IEEE Space initiative for student engagement in space science and technology.</li>
+        <li>Spearheaded visual communication for space-themed events and technical sessions.</li>
+        <li>Designed promotional materials for workshops and speaker sessions in collaboration with faculty advisors.</li>
+        <li>Developed a photography and documentation system for all space program activities.</li>
+        <li>Mentored junior members in event documentation and design best practices.</li>
+      </ul>
+      <div class="l-bg-text">26</div>
+    </div>
+  </div>
+
+  <!-- CineLab leadership card spanning full width -->
+  <div style="margin-top:2px;">
+    <div class="leadership-card" style="border-left: none; grid-column: span 2; padding: 3rem; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;">
+      <div>
+        <div class="l-year">Spectrum · 2024–Present</div>
+        <div class="l-title">Photography Club Lead — CineLab</div>
+        <div class="l-org">Spectrum Creative Organisation</div>
+        <ul class="l-points" style="margin-top:1rem;">
+          <li>Lead CineLab, the photography & videography wing under Spectrum, overseeing a multi-member team.</li>
+          <li>Designed a 3-month progressive curriculum ("See → Create → Express") for members of mixed skill levels.</li>
+          <li>Planned and executed monthly member-exclusive events ending in Spectrum Week showcase.</li>
+          <li>Mentored new photographers in composition, lighting, and post-processing workflows.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="l-year">IEEE SB · Ongoing</div>
+        <div class="l-title">Design Head</div>
+        <div class="l-org">IEEE Student Branch</div>
+        <ul class="l-points" style="margin-top:1rem;">
+          <li>Oversee all visual communications for the IEEE Student Branch — posters, social media, and print.</li>
+          <li>Maintain a consistent brand identity across 30+ events per academic year.</li>
+          <li>Collaborate with technical teams to translate complex ideas into accessible visual narratives.</li>
+          <li>Managed a team of junior designers for concurrent event campaigns.</li>
+        </ul>
+      </div>
+      <div class="l-bg-text" style="right:2rem; font-size:8rem;">OS</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 8. CONTACT ── -->
+<section id="contact">
+  <div class="contact-inner fade-in">
+    <div class="section-num">07 / Contact</div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-big">Let's <em>create</em><br/>something great.</div>
+        <p class="contact-sub">Open to freelance photography, design commissions, collaborations, and creative opportunities. Drop a message and let's talk.</p>
+      </div>
+      <div class="contact-links">
+        <a href="tel:8329084625" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-link-label">Phone</div>
+            <div class="contact-link-value">+91 83290 84625</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/omkarsanjeev" target="_blank" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">linkedin.com/in/omkarsanjeev</div>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/not_.omkar/" target="_blank" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div>
+            <div class="contact-link-label">Instagram</div>
+            <div class="contact-link-value">@not_.omkar</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Omkar Sanjeev &nbsp;·&nbsp; Portfolio 2025</span>
+  <span>Photography &amp; Design &nbsp;·&nbsp; ECE Student</span>
+  <span>Sony DSC-H10 &nbsp;·&nbsp; CineLab &nbsp;·&nbsp; IEEE</span>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Stagger children within fade-in parents
+  document.querySelectorAll('.skills-grid .skill-col, .projects-grid .project-card, .featured-list .featured-item, .leadership-grid .leadership-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`;
+    el.classList.add('fade-in');
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
